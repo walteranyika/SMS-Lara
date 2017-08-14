@@ -41,5 +41,9 @@ h1.card-project{
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
+
+.navbar-brand,.navbar-nav a{
+    font-weight: 600;
+}
 /*CHECK THIS OUT*/
 /*https://bootsnipp.com/snippets/featured/box-material-design*/

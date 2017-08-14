@@ -24,9 +24,11 @@ class AdminController extends Controller
     }
     public function approvals()
     {
-        $projects =Project::all();
+        $match=['presented'=>'No'];
+        $projects =Project::where($match)->get();
         return view('approvals')->with('projects',$projects);
     }
+
     public function approve(Project $project)
     {
         //dd($project);
@@ -41,6 +43,7 @@ class AdminController extends Controller
             return redirect()->route('approvals');
         }
     }
+
     public function presentations()
     {
         $matchThese = ['can_present' => 'Yes', 'presented' => 'No'];

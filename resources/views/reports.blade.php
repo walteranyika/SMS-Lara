@@ -25,6 +25,8 @@
                         <tr>
                             <th>Student Names</th>
                             <th>Project Title</th>
+                            <th>Adm Number</th>
+                            <th>Phone</th>
                             <th>Program</th>
                             <th>Email</th>
                             <th>Presented?</th>
@@ -37,6 +39,7 @@
                             <tr>
                                 <td>{{$project->user->name}}</td>
                                 <td>{{$project->title}}</td>
+                                <td>{{$project->tel}}</td>
                                 <td>{{$project->program}}</td>
                                 <td>{{$project->user->email}}</td>
                                 <td>{{$project->presented}}</td>

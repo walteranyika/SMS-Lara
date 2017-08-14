@@ -39,8 +39,18 @@ class HomeController extends Controller
     }
 
     public function saveProject(Request $request)
-    {
+    {//0723740215
        // dd($request->all());
+        $this->validate($request,[
+             'title'=>'required|min:3',
+             'desc'=>'required|min:10',
+             'tel'=>'required|min:9',
+             'adm'=>'required|min:7',
+             'img_1'=>'required|mimes:jpeg,bmp,png,jpg',
+             'img_2'=>'required|mimes:jpeg,bmp,png,jpg',
+             'img_3'=>'required|mimes:jpeg,bmp,png,jpg',
+             'img_4'=>'required|mimes:jpeg,bmp,png,jpg',
+        ]);
 
         $destinationPath = "images";
 
@@ -63,11 +73,10 @@ class HomeController extends Controller
         $project->img_2=$img_2;
         $project->img_3=$img_3;
         $project->img_4=$img_4;
+        $project->tel=$request->tel;
         $project->lecturer=$request->lecturer;
-
         $user = Auth::user();
         $user->projects()->save($project);
-
         return redirect()->route('projects')->with('success','Project was added successfully');
 
 
@@ -78,6 +87,7 @@ class HomeController extends Controller
         $projects =Auth::user()->projects;
         return view('projects')->with('projects',$projects);
     }
+
    public function delete(Project $project)
     {
       if(($project->user_id==Auth::user()->id) and $project->presented=="No" )

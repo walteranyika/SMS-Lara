@@ -17,6 +17,7 @@
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Names</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -27,6 +28,7 @@
                         <tbody>
                            @foreach($users as $user)
                                <tr>
+                                   <td></td>
                                    <td>{{$user->name}}</td>
                                    <td>{{$user->email}}</td>
                                    <td>{{$user->role->name}}</td>
@@ -42,7 +44,20 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        var t = $('#example').DataTable( {
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            } ],
+            "order": [[ 1, 'asc' ]]
+        } );
+
+        t.on( 'order.dt search.dt', function () {
+            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
     } );
 </script>
 @endsection

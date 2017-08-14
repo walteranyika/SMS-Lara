@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <h2 class="text-center">{{$project->title}}</h2>
-    <h2 class="text-center">{{$project->user->name}}</h2>
+    <h2 class="text-center">{{ucwords($project->user->name)}}</h2>
     <p class="text-center">{{$project->body}}</p>
     <p class="text-center">{{$project->lecturer}}</p>
     <div class="row">

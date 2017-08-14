@@ -11,12 +11,13 @@
     <div class="row">
 
             <div class="panel panel-default">
-                <div class="panel-heading">Approve Student Projects For Presentations</div>
+                <div class="panel-heading"><h3>Pending students waiting to be cleared on fees</h3></div>
 
                 <div class="panel-body">
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Student Names</th>
                                 <th>Project Title</th>
                                 <th>Program</th>
@@ -28,6 +29,7 @@
                         <tbody>
                            @foreach($projects as $project)
                                <tr>
+                                   <td></td>
                                    <td>{{$project->user->name}}</td>
                                    <td>{{$project->title}}</td>
                                    <td>{{$project->program}}</td>
@@ -49,7 +51,20 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        var t = $('#example').DataTable( {
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            } ],
+            "order": [[ 1, 'asc' ]]
+        } );
+
+        t.on( 'order.dt search.dt', function () {
+            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
     } );
 </script>
 @endsection

@@ -83,11 +83,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Android</a>
-                    <a href="https://laracasts.com">PHP</a>
-                    <a href="https://laravel-news.com">HTML</a>
-                    <a href="https://forge.laravel.com">MYSQL</a>
-                    <a href="https://github.com/laravel/laravel">Python</a>
+                    <a href="#">Android</a>
+                    <a href="#">PHP</a>
+                    <a href="#">HTML</a>
+                    <a href="#">MYSQL</a>
+                    <a href="#">Python</a>
                 </div>
             </div>
         </div>
