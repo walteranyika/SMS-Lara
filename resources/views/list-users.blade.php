@@ -9,31 +9,29 @@
         </div>
     @endif
     <div class="row">
-
+            <a href="{{route('all_users')}}">Add User</a>
             <div class="panel panel-default">
-                <div class="panel-heading">Approve Student's Project Presentation</div>
+                <div class="panel-heading">System Users</div>
 
                 <div class="panel-body">
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Student Names</th>
-                                <th>Project Title</th>
-                                <th>Program</th>
-                                <th>Lecturer</th>
-                                <th>Can Present?</th>
-                                <th>Approve Project</th>
+                                <th>Names</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Date Added</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach($projects as $project)
+                           @foreach($users as $user)
                                <tr>
-                                   <td>{{$project->user->name}}</td>
-                                   <td>{{$project->title}}</td>
-                                   <td>{{$project->program}}</td>
-                                   <td>{{$project->lecturer}}</td>
-                                   <td><p>{{$project->can_present}}</p></td>
-                                   <td><a class="btn btn-block btn-primary" href="presented/{{$project->id}}">Approve Presentation</a></td>
+                                   <td>{{$user->name}}</td>
+                                   <td>{{$user->email}}</td>
+                                   <td>{{$user->role->name}}</td>
+                                   <td>{{$user->created_at->format('d-m-Y')}}</td>
+                                   <td><a class="btn btn-block btn-primary" href="adminify/{{$user->id}}">Make Admin</a></td>
                                </tr>
                            @endforeach
                         </tbody>

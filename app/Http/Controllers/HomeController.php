@@ -58,7 +58,7 @@ class HomeController extends Controller
         $project->program=$request->program;
         $project->title=$request->title;
         $project->body=$request->desc;
-        $project->images=$img_1;
+        $project->images=$request->adm;
         $project->img_1=$img_1;
         $project->img_2=$img_2;
         $project->img_3=$img_3;

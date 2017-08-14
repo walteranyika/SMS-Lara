@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Role;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
@@ -66,5 +67,33 @@ class AdminController extends Controller
     {
         $projects =Project::all();
         return view('reports')->with('projects',$projects);
+    }
+
+    public function users()
+    {   //modify
+        $match=['role_id'=>2];
+        $users =User::where($match)->get();
+        return view('users')->with('users',$users);
+    }
+
+    public function all_users()
+    {   //modify
+        $match=['role_id'=>1];
+        $users =User::where($match)->get();
+        return view('list-users')->with('users',$users);
+    }
+    public function adminify(User $user)
+    {   //modify
+       $user->role_id=2;
+       $user->update();
+       $message= "User $user->name has successfully been made an administrator";
+       return redirect()->route('users')->with('success',$message);
+    }
+    public function deactivate(User $user)
+    {   //modify
+       $user->role_id=1;
+       $user->update();
+       $message= "User $user->name has successfully been removed as from administrators list";
+       return redirect()->route('users')->with('success',$message);
     }
 }

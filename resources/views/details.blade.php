@@ -6,9 +6,10 @@
 @endsection
 @section('content')
 <div class="container">
-    <h3 class="text-center">{{$project->title}}</h3>
+    <h2 class="text-center">{{$project->title}}</h2>
+    <h2 class="text-center">{{$project->user->name}}</h2>
     <p class="text-center">{{$project->body}}</p>
-    <p class="text-center">{{$project->user->name}}</p>
+    <p class="text-center">{{$project->lecturer}}</p>
     <div class="row">
         <div class="col-sm-3">
             <a href="{{URL::asset('/images/'.$project->img_1)}}" data-lightbox="tribal">

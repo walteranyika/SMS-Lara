@@ -11,6 +11,11 @@
                     <form method="POST" action="{{ route('save-project') }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="form-group">
+                            <label for="adm">Your Admission Number</label>
+                            <input type="text" class="form-control" id="adm" name="adm" placeholder="Your Admission Number" required>
+                        </div>
+
+                        <div class="form-group">
                             <label for="lecturer">Select Your Lecturer</label>
                             <select class="form-control" id="lecturer" name="lecturer">
                                 <option value="Mr. Walter">Mr. Walter</option>
