@@ -60,12 +60,16 @@
             $('#example').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'pageLength','csv', 'excel','columnsToggle'
+                    'pageLength','csv', 'excel'
                 ],
                 lengthMenu: [
                     [ 10, 25, 50,100, -1 ],
                     [ '10 rows', '25 rows', '50 rows','100 rows' ,'Show all' ]
-                ]
+                ],
+                "language": {
+                    "emptyTable": "No data available is currently available for reports"
+                }
+
             });
         } );
     </script>

@@ -8,6 +8,7 @@ use App\User;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -75,28 +76,63 @@ class AdminController extends Controller
     public function users()
     {   //modify
         $match=['role_id'=>2];
-        $users =User::where($match)->get();
+        $users =User::where('role_id','>',1)->get();
         return view('users')->with('users',$users);
     }
 
     public function all_users()
     {   //modify
-        $match=['role_id'=>1];
-        $users =User::where($match)->get();
-        return view('list-users')->with('users',$users);
+        if(Auth::user()->isSuperAdmin())
+        {
+            $match=['role_id'=>1];
+            $users =User::where($match)->get();
+            return view('list-users')->with('users',$users);
+        }else
+        {
+            return redirect()->route('admin');
+        }
+
     }
     public function adminify(User $user)
     {   //modify
-       $user->role_id=2;
-       $user->update();
-       $message= "User $user->name has successfully been made an administrator";
-       return redirect()->route('users')->with('success',$message);
+        if(Auth::user()->isSuperAdmin())
+        {
+            $user->role_id=2;
+            $user->update();
+            $message= "User $user->name has successfully been made an Administrator";
+            return redirect()->route('users')->with('success',$message);
+        }else
+        {
+            $message= "Faile to make ". $user->name ."an admin because you are not a super admin. Only super admins can perform this action";
+            return redirect()->route('users')->with('success',$message);
+        }
+    }
+    public function sadminify(User $user)
+    {   //modify
+        if(Auth::user()->isSuperAdmin())
+        {
+            $user->role_id=3;
+            $user->update();
+            $message= "User $user->name has successfully been made a Super Administrator";
+            return redirect()->route('users')->with('success',$message);
+        }else
+        {
+            $message= "Faile to make ". $user->name ."a Super Admin because you are not a super admin. Only super admins can perform this action";
+            return redirect()->route('users')->with('success',$message);
+        }
     }
     public function deactivate(User $user)
     {   //modify
-       $user->role_id=1;
-       $user->update();
-       $message= "User $user->name has successfully been removed as from administrators list";
-       return redirect()->route('users')->with('success',$message);
+        if(Auth::user()->isSuperAdmin())
+        {
+            $user->role_id = 1;
+            $user->update();
+            $message = "User $user->name has successfully been removed as from administrators list";
+            return redirect()->route('users')->with('success', $message);
+        }else
+        {
+            $message= "Faile to deactivate user ". $user->name ." because you are not a super admin. Only super admins can perform this action";
+            return redirect()->route('users')->with('success',$message);
+        }
     }
 }

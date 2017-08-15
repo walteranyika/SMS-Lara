@@ -40,6 +40,14 @@ class User extends Authenticatable
       return false;
     }
 
+    public function isSuperAdmin()
+    {
+      if($this->role->name=="SuperAdmin"){
+         return true;
+      }
+      return false;
+    }
+
 
     public function projects()
     {

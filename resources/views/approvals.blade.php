@@ -57,7 +57,8 @@
                 "orderable": false,
                 "targets": 0
             } ],
-            "order": [[ 1, 'asc' ]]
+            "order": [[ 1, 'asc' ]],
+            "language": { "emptyTable": "No students have submitted their projects so that they could be cleared for fees"}
         } );
 
         t.on( 'order.dt search.dt', function () {

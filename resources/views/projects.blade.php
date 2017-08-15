@@ -23,7 +23,7 @@
                         <p>{{$project->body}}</p>
                         <a href="#">{{$project->lecturer}}</a>
                         <p>Presented? : {{$project->presented}}</p>
-                        <p><a class="pics-btn" href="gallery/{{$project->id}}">Images</a></p>
+                        <p><a class="pics-btn" href="gallery/{{$project->id}}">More Details</a></p>
                         @if($project->presented=="No")
                           <a href="delete/{{$project->id}}">Delete Project</a>
                         @endif

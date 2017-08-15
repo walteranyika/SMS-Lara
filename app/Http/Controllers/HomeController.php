@@ -44,12 +44,15 @@ class HomeController extends Controller
         $this->validate($request,[
              'title'=>'required|min:3',
              'desc'=>'required|min:10',
-             'tel'=>'required|min:9',
-             'adm'=>'required|min:7',
+             'tel'=>'required|regex:/(07)[0-9]{8}/',
+             'adm'=>'required|regex:/^(\d){2}\/(\d){4}\/(\d){4}$/',
              'img_1'=>'required|mimes:jpeg,bmp,png,jpg',
              'img_2'=>'required|mimes:jpeg,bmp,png,jpg',
              'img_3'=>'required|mimes:jpeg,bmp,png,jpg',
              'img_4'=>'required|mimes:jpeg,bmp,png,jpg',
+        ], [
+            'adm.regex'=>'Your Admission Number is invalid. Use format xx/xxxx/xxxx',
+            'tel.regex'=>'Your Phone number is invalid. Use format 07xxxxxxxx.'
         ]);
 
         $destinationPath = "images";

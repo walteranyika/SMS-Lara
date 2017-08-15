@@ -32,6 +32,7 @@ Route::get('/details/{project}','AdminController@details')->name('details');
 Route::get('/users','AdminController@users')->name('users');
 Route::get('/list-users','AdminController@all_users')->name('all_users');
 Route::get('/adminify/{user}','AdminController@adminify')->name('adminify');
+Route::get('/sadminify/{user}','AdminController@sadminify')->name('sadminify');
 Route::get('/deactivate/{user}','AdminController@deactivate')->name('deactivate');
 
 Route::get('/new-project', 'HomeController@showNewProject')->name('new-project');

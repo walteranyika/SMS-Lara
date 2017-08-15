@@ -11,7 +11,7 @@
     <div class="row">
 
             <div class="panel panel-default">
-                <div class="panel-heading">Approve Student's Project Presentation</div>
+                <div class="panel-heading"><h3>Approve Student's Project Presentation</h3></div>
 
                 <div class="panel-body">
                     <table id="example" class="display" cellspacing="0" width="100%">
@@ -52,7 +52,8 @@
                 "orderable": false,
                 "targets": 0
             } ],
-            "order": [[ 1, 'asc' ]]
+            "order": [[ 1, 'asc' ]],
+            "language": { "emptyTable": "No students have have been approved for presentation"}
         } );
 
         t.on( 'order.dt search.dt', function () {

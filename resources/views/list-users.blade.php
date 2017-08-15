@@ -22,7 +22,8 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Date Added</th>
-                                <th>Action</th>
+                                <th>Admin</th>
+                                <th>Super Admin</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,7 @@
                                    <td>{{$user->role->name}}</td>
                                    <td>{{$user->created_at->format('d-m-Y')}}</td>
                                    <td><a class="btn btn-block btn-primary" href="adminify/{{$user->id}}">Make Admin</a></td>
+                                   <td><a class="btn btn-block btn-primary" href="sadminify/{{$user->id}}">Make Super Admin</a></td>
                                </tr>
                            @endforeach
                         </tbody>
@@ -50,7 +52,8 @@
                 "orderable": false,
                 "targets": 0
             } ],
-            "order": [[ 1, 'asc' ]]
+            "order": [[ 1, 'asc' ]],
+            "language": { "emptyTable": "No data available is currently available for reports"}
         } );
 
         t.on( 'order.dt search.dt', function () {

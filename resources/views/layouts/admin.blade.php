@@ -54,14 +54,15 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            @if(Auth::user()->isAdmin())
+                            @if(Auth::user()->isAdmin() or Auth::user()->isSuperAdmin() )
                                   {{--Admin links--}}
                                 <li><a href="{{route('admin')}}">Home</a></li>
                                 <li><a href="{{route('approvals')}}">Approvals</a></li>
                                 <li><a href="{{route('presentations')}}">Presentations</a></li>
                                 <li><a href="{{route('reports')}}">Reports</a></li>
-                                <li><a href="{{route('users')}}">Users</a></li>
-
+                                @if(Auth::user()->isSuperAdmin())
+                                  <li><a href="{{route('users')}}">Users</a></li>
+                                @endif
                             @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

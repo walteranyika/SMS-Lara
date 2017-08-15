@@ -57,11 +57,6 @@
                                 <li><a href="{{route('home')}}">Home</a></li>
                                 <li><a href="{{route('new-project')}}">New Project</a></li>
                                 <li><a href="{{route('projects')}}">My Projects</a></li>
-
-                            @else
-                                {{--Admin links--}}
-                                <li><a href="#">All Projects</a></li>
-                                <li><a href="#">Students</a></li>
                             @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

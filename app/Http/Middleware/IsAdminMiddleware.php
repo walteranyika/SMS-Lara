@@ -17,11 +17,16 @@ class IsAdminMiddleware
     public function handle($request, Closure $next)
     {
         $user= Auth::user();
+        //dd(!$user->isSuperAdmin() );
+
         if ($user==null){
             return redirect('/home');
         }
-        if (!$user->isAdmin()){
-            return redirect('/home');
+        if (!$user->isSuperAdmin() )
+        {
+            if(!$user->isAdmin()){
+                return redirect('/home');
+            }
         }
         return $next($request);
     }

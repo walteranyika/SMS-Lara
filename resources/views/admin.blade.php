@@ -5,7 +5,7 @@
     <div class="row">
 
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Dashboard</div>
+                <div class="panel-heading"><h3>Admins General Snapshot</h3></div>
 
                 <div class="panel-body">
                     <table id="example" class="display" cellspacing="0" width="100%">
@@ -52,7 +52,8 @@
                 "orderable": false,
                 "targets": 0
             } ],
-            "order": [[ 1, 'asc' ]]
+            "order": [[ 1, 'asc' ]],
+            "language": { "emptyTable": "No students data is currently available"}
         } );
 
         t.on( 'order.dt search.dt', function () {
