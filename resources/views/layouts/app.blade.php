@@ -57,6 +57,7 @@
                                 <li><a href="{{route('home')}}">Home</a></li>
                                 <li><a href="{{route('new-project')}}">New Project</a></li>
                                 <li><a href="{{route('projects')}}">My Projects</a></li>
+                                <li><a href="{{route('profile')}}">Edit Profile</a></li>
                             @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

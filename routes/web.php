@@ -40,6 +40,8 @@ Route::get('/projects', 'HomeController@showProjects')->name('projects');
 Route::get('/delete/{project}', 'HomeController@delete')->name('delete');
 Route::post('/new-project', 'HomeController@saveProject')->name('save-project');
 Route::get('/gallery/{project}', 'HomeController@gallery')->name('gallery');
+Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::post('/profile', 'HomeController@storeProfile')->name('save-profile');
 
 /*Route::get('/send',function (){
     $data=[

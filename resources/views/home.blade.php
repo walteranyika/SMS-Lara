@@ -28,10 +28,19 @@
                         </a>
 
                         <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading text-info">Official Names</h4>
+                            <p class="list-group-item-text">You can update your official names under Edit Profile. These are the names that will appear on your graduation certificate</p>
+                        </a>
+
+                        <a href="#" class="list-group-item">
                             <h4 class="list-group-item-heading text-info">Extras</h4>
                             <p class="list-group-item-text">You can  delete and reupload your project as long as you have not presented.</p>
                             <p class="list-group-item-text">You can upload as many projects to the portal.</p>
                         </a>
+                        <a href="{{route('new-project')}}" class="list-group-item">
+                            <h2 class="text-center text-primary">Add A New Project!</h2>
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -103,6 +103,30 @@ class HomeController extends Controller
       }
 
     }
+    public function profile()
+    {
+      $user = Auth::user();
+      return view('profile')->with('user',$user);
+    }
+
+    public function storeProfile(Request $request)
+    {
+      //dd($request->all());
+        //([a-zA-Z]+\s?\b){2,}
+        $this->validate($request,[
+            'name'=>'required|min:6|regex:/([a-zA-Z]+\s?\b){2,}/',
+        ], [
+            'name.required'=>'Your names cannot be empty',
+            'name.min'=>'You need to use at least two of your names e.g John Doe',
+            'name.regex'=>'You need to use at least two of your names e.g John Doe with single spacing',
+        ]);
+        $user =Auth::user();
+        $names = ucwords($request->name);
+        $user->name=$names;
+        $user->update();
+        $message="Your official names have been updated successfully. This are the names ($names) that will appear on your graduation certificate.";
+        return redirect()->route('profile')->with('success',$message);
+    }
 
     public function gallery(Project $project)
     {
